@@ -11,4 +11,9 @@ public class AdminSampleTest {
         AdminSample.adminClient();
     }
 
+    @Test
+    public void testCreateTopic() {
+        AdminSample.createTopic();
+    }
+
 }
