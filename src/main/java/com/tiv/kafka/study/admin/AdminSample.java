@@ -12,13 +12,29 @@ public class AdminSample {
 
     public static final String TOPIC_NAME = "test-topic";
 
+    private static volatile AdminClient adminClient;
+
+    /**
+     * 单例模式创建AdminClient,连接Kafka
+     *
+     * @return
+     */
     public static AdminClient adminClient() {
-        Properties properties = new Properties();
-        properties.setProperty(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        AdminClient adminClient = AdminClient.create(properties);
+        if (adminClient == null) {
+            synchronized (AdminSample.class) {
+                if (adminClient == null) {
+                    Properties properties = new Properties();
+                    properties.setProperty(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+                    adminClient = AdminClient.create(properties);
+                }
+            }
+        }
         return adminClient;
     }
 
+    /**
+     * 创建Topic
+     */
     public static void createTopic() {
         AdminClient adminClient = adminClient();
         short rf = 1;
