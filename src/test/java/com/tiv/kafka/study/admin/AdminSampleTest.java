@@ -12,8 +12,13 @@ public class AdminSampleTest {
     }
 
     @Test
-    public void testCreateTopic() {
+    public void testCreateTopic() throws Exception {
         AdminSample.createTopic();
+    }
+
+    @Test
+    public void testListTopics() throws Exception {
+        AdminSample.listTopics();
     }
 
 }
