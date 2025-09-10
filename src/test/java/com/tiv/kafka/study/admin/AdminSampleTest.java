@@ -21,4 +21,9 @@ public class AdminSampleTest {
         AdminSample.listTopics();
     }
 
+    @Test
+    public void testDelTopic() throws Exception {
+        AdminSample.delTopic();
+    }
+
 }

@@ -56,4 +56,17 @@ public class AdminSample {
         System.out.println("listTopics--" + names);
     }
 
+    /**
+     * 删除Topic
+     *
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public static void delTopic() throws ExecutionException, InterruptedException {
+        AdminClient adminClient = adminClient();
+        DeleteTopicsResult deleteTopicsResult = adminClient.deleteTopics(Arrays.asList(TOPIC_NAME));
+        deleteTopicsResult.all().get();
+        System.out.println("delTopic--" + deleteTopicsResult);
+    }
+
 }
