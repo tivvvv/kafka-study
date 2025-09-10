@@ -1,8 +1,10 @@
 package com.tiv.kafka.study.admin;
 
 import org.apache.kafka.clients.admin.*;
+import org.apache.kafka.common.config.ConfigResource;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -67,6 +69,20 @@ public class AdminSample {
         DeleteTopicsResult deleteTopicsResult = adminClient.deleteTopics(Arrays.asList(TOPIC_NAME));
         deleteTopicsResult.all().get();
         System.out.println("delTopic--" + deleteTopicsResult);
+    }
+
+    /**
+     * 列出配置项
+     *
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public static void listConfigs() throws ExecutionException, InterruptedException {
+        AdminClient adminClient = adminClient();
+        ConfigResource configResource = new ConfigResource(ConfigResource.Type.TOPIC, TOPIC_NAME);
+        DescribeConfigsResult describeConfigsResult = adminClient.describeConfigs(Arrays.asList(configResource));
+        Map<ConfigResource, Config> configResourceConfigMap = describeConfigsResult.all().get();
+        System.out.println("listConfigs--" + configResourceConfigMap);
     }
 
 }
