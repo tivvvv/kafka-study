@@ -36,4 +36,9 @@ public class AdminSampleTest {
         AdminSample.alterConfig();
     }
 
+    @Test
+    public void testIncrPartition() throws Exception {
+        AdminSample.incrPartition(2);
+    }
+
 }

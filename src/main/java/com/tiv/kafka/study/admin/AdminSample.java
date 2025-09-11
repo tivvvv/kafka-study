@@ -104,4 +104,22 @@ public class AdminSample {
         System.out.println("alterConfig--" + result);
     }
 
+    /**
+     * 增加分区
+     *
+     * @param partitionNum
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public static void incrPartition(int partitionNum) throws ExecutionException, InterruptedException {
+        AdminClient adminClient = adminClient();
+        NewPartitions newPartitions = NewPartitions.increaseTo(partitionNum);
+        Map<String, NewPartitions> partitionsMap = new HashMap<>();
+        partitionsMap.put(TOPIC_NAME, newPartitions);
+
+        CreatePartitionsResult result = adminClient.createPartitions(partitionsMap);
+        result.all().get();
+        System.out.println("incrPartition--" + result);
+    }
+
 }
