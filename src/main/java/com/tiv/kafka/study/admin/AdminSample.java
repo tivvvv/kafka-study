@@ -56,6 +56,16 @@ public class AdminSample {
     }
 
     /**
+     * Topic详情.
+     */
+    public static void detailTopic() throws ExecutionException, InterruptedException {
+        AdminClient adminClient = adminClient();
+        DescribeTopicsResult describeTopicsResult = adminClient.describeTopics(Arrays.asList(TOPIC_NAME));
+        Map<String, TopicDescription> stringTopicDescriptionMap = describeTopicsResult.all().get();
+        System.out.println("detailTopic--" + stringTopicDescriptionMap);
+    }
+
+    /**
      * 删除Topic
      *
      * @throws ExecutionException

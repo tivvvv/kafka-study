@@ -22,6 +22,11 @@ public class AdminSampleTest {
     }
 
     @Test
+    public void testDetailTopic() throws Exception {
+        AdminSample.detailTopic();
+    }
+
+    @Test
     public void testDelTopic() throws Exception {
         AdminSample.delTopic();
     }
