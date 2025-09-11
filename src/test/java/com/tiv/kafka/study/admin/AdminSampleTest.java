@@ -31,4 +31,9 @@ public class AdminSampleTest {
         AdminSample.listConfigs();
     }
 
+    @Test
+    public void testAlterConfig() throws Exception {
+        AdminSample.alterConfig();
+    }
+
 }

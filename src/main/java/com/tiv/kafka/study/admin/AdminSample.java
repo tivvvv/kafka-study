@@ -3,10 +3,7 @@ package com.tiv.kafka.study.admin;
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.common.config.ConfigResource;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class AdminSample {
@@ -83,6 +80,28 @@ public class AdminSample {
         DescribeConfigsResult describeConfigsResult = adminClient.describeConfigs(Arrays.asList(configResource));
         Map<ConfigResource, Config> configResourceConfigMap = describeConfigsResult.all().get();
         System.out.println("listConfigs--" + configResourceConfigMap);
+    }
+
+    /**
+     * 修改配置项
+     *
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public static void alterConfig() throws ExecutionException, InterruptedException {
+        AdminClient adminClient = adminClient();
+
+        Map<ConfigResource, Collection<AlterConfigOp>> configs = new HashMap<>();
+        ConfigResource configResource = new ConfigResource(ConfigResource.Type.TOPIC, TOPIC_NAME);
+
+        // 设置配置项
+        Collection<AlterConfigOp> configEntries = Arrays.asList(
+                new AlterConfigOp(new ConfigEntry("preallocate", "true"), AlterConfigOp.OpType.SET));
+        configs.put(configResource, configEntries);
+
+        AlterConfigsResult result = adminClient.incrementalAlterConfigs(configs);
+        result.all().get();
+        System.out.println("alterConfig--" + result);
     }
 
 }
