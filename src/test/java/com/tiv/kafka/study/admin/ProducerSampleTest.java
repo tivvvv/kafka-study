@@ -12,4 +12,9 @@ public class ProducerSampleTest {
         ProducerSample.send();
     }
 
+    @Test
+    public void testSyncSend() throws Exception {
+        ProducerSample.syncSend();
+    }
+
 }
