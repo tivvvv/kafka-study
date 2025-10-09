@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 
 public class AdminSample {
 
-    public static final String TOPIC_NAME = "test-topic-1";
+    public static final String TOPIC_NAME = "test-topic";
 
     private static volatile AdminClient adminClient;
 

@@ -17,4 +17,9 @@ public class ProducerSampleTest {
         ProducerSample.syncSend();
     }
 
+    @Test
+    public void testSendWithCallback() {
+        ProducerSample.syncSendWithCallback();
+    }
+
 }
