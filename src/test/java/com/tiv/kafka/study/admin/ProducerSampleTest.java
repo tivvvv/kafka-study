@@ -22,4 +22,9 @@ public class ProducerSampleTest {
         ProducerSample.syncSendWithCallback();
     }
 
+    @Test
+    public void testSendWithSamplePartition() {
+        ProducerSample.syncSendWithSamplePartition();
+    }
+
 }
