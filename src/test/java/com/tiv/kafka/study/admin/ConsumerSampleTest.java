@@ -12,4 +12,9 @@ public class ConsumerSampleTest {
         ConsumerSample.consume();
     }
 
+    @Test
+    public void testConsumeWithCommitAsync() {
+        ConsumerSample.consumeWithCommitAsync();
+    }
+
 }
