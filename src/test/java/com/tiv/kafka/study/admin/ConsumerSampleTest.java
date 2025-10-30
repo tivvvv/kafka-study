@@ -17,4 +17,9 @@ public class ConsumerSampleTest {
         ConsumerSample.consumeWithCommitAsync();
     }
 
+    @Test
+    public void testConsumeWithCommitSyncForeachPartition() {
+        ConsumerSample.consumeWithCommitSyncForeachPartition();
+    }
+
 }
