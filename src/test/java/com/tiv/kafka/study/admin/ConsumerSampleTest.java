@@ -22,4 +22,9 @@ public class ConsumerSampleTest {
         ConsumerSample.consumeWithCommitSyncForeachPartition();
     }
 
+    @Test
+    public void testConsumeSpecificPartition() {
+        ConsumerSample.consumeSpecificPartition();
+    }
+
 }
